@@ -1,0 +1,84 @@
+.flex {
+  display: flex;
+}
+.container {
+  padding: 40px;
+  margin: 0 auto;
+}
+.uploadDoc {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 900px;
+}
+.fileUp {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+#document {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.upBtn {
+  color: white;
+  background-color: #4834d4;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+}
+.upBtn a {
+  cursor: pointer;
+}
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.profilePic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.communityCards {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+}
+.card {
+  width: 200px;
+  border: 0.5px solid;
+  border-radius: 10px;
+  padding: 8px;
+  margin-top: 20px;
+}
+.cardCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.flexGap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.viewBtn {
+  display: flex;
+  justify-content: center;
+
+  margin: 0px auto;
+  padding: 5px 50px;
+  background-color: #4834d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}

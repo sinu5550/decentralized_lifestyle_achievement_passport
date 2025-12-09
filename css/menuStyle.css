@@ -1,0 +1,41 @@
+* {
+  font-family: Cambria, Cochin, Georgia, serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.mentuItems {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.mentuItems a {
+  display: flex;
+  text-decoration: none;
+  color: black;
+  margin: 2px;
+  padding: 10px;
+  font-size: 14px;
+}
+.mentuItems a:hover {
+  background-color: #fefefe;
+  border-radius: 5px;
+  padding-left: 13px;
+}
+.sidebar {
+  width: 300px;
+  height: 100vh;
+  background-color: #f6f9f9;
+  padding: 15px;
+}
+.logout {
+  position: absolute;
+  width: 280px;
+  bottom: 20px;
+}
+.icons {
+  width: 18px;
+  margin-right: 8px;
+}
+
