@@ -22,14 +22,14 @@
           <div class="flex fileUp">
             <div>
               <div class="center">
-                <img src="../assets/images/file.png" alt="" class="icons" /><span>
+                <img src="../assets/images/file.png" alt="" style="width: 13px; height: 13px; margin-right: 8px;" /><span>
                   Personal Documents
                 </span>
               </div>
             </div>
             <form>
               <div class="upBtn">
-                <img src="../assets/images/upload.png" class="icons" alt="" />
+                <img src="../assets/images/upload.png" style="width: 13px; height: 13px; margin-right: 8px;" alt="" />
                 <a type="submit">Upload Document</a>
               </div>
             </form>
