@@ -2,7 +2,7 @@
   font-family: Cambria, Cochin, Georgia, serif;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .mentuItems {
@@ -25,17 +25,14 @@
 }
 .sidebar {
   width: 300px;
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #f6f9f9;
   padding: 15px;
 }
 .logout {
-  position: absolute;
   width: 280px;
-  bottom: 20px;
 }
 .icons {
   width: 18px;
   margin-right: 8px;
 }
-
