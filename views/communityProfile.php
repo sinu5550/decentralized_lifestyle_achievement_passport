@@ -59,6 +59,14 @@
                 <button class="button-blue" style="margin-top: 10px;">💬 Submit Feedback</button>
 
             </div>
+            <!-- community feedback-------------- -->
+            <div class="badgeSection">
+                <h4>Community Feedback</h4>
+
+                <p style="margin-top: 20px; text-align: center;">No feedback yet</p>
+
+
+            </div>
 
         </div>
     </div>

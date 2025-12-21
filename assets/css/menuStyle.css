@@ -29,6 +29,9 @@
   height: 100vh;
   background-color: #f6f9f9;
   padding: 15px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  position: relative;
 }
 .logout {
   width: 280px;

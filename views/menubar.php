@@ -46,13 +46,13 @@
         src="../assets/menuImages/community.png"
         alt=""
         class="icons" />Community</a>
-    <a href="../views/document.php"><img
+    <a href="../views/verification.php"><img
         src="../assets/menuImages/checkmark.png"
         alt=""
         class="icons" />Verification</a>
     <a href="../views/document.php"><img src="../assets/menuImages/cv.png" alt="" class="icons" />CV
       Generator</a>
-    <a href="../views/document.php"><img
+    <a href="../views/support.php"><img
         src="../assets/menuImages/support.png"
         alt=""
         class="icons" />Support</a>
