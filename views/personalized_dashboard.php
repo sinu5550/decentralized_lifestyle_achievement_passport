@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
     <link rel="stylesheet" href="../assets/css/style-R.css" />
+    <link rel="stylesheet" href="../assets/css/menuStyle.css" />
   </head>
   <body>
-    <div>
+    <div class="flex">
+      <div class="menubar">
+            <?php require_once "menubar.php"; ?>
+      </div>
+    <div class="container">
       <section class="scoring">
         <div class="card">
           <h3>Reputation Score</h3>
@@ -26,9 +31,7 @@
           <p>00</p>
         </div>
       </section>
-    </div>
-
-    <div>
+      <div>
       <section class="quickSection">
         <div><h3>Quick Actions</h3></div>
         <div class="Quick_Actions">
@@ -50,6 +53,10 @@
           </div>
         </div>
       </section>
+    </div>
+    </div>
+
+    
     </div>
   </body>
 </html>
