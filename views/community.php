@@ -15,7 +15,7 @@
       <?php require_once "menubar.php"; ?>
     </div>
     <div class="container">
-      <div>
+      <div style="width: 800px;">
         <h3>Community Profiles</h3>
         <span>Connect with other members and their achievements</span>
         <div class="flex communityCards">
@@ -32,7 +32,9 @@
               <div class="flexGap"><span>Points</span>100</div>
               <div class="flexGap"><span>Badges</span>1</div>
 
-              <button class="viewBtn">View Profile</button>
+              <div class="viewBtn">
+                <a href="communityProfile.php">View Profile</a>
+              </div>
             </div>
           </div>
           <div class="card">
@@ -48,7 +50,9 @@
               <div class="flexGap"><span>Points</span>100</div>
               <div class="flexGap"><span>Badges</span>1</div>
 
-              <button class="viewBtn">View Profile</button>
+              <div class="viewBtn">
+                <a href="communityProfile.php">View Profile</a>
+              </div>
             </div>
           </div>
           <div class="card">
@@ -64,7 +68,9 @@
               <div class="flexGap"><span>Points</span>100</div>
               <div class="flexGap"><span>Badges</span>1</div>
 
-              <button class="viewBtn">View Profile</button>
+              <div class="viewBtn">
+                <a href="communityProfile.php">View Profile</a>
+              </div>
             </div>
           </div>
           <div class="card">
@@ -80,7 +86,9 @@
               <div class="flexGap"><span>Points</span>100</div>
               <div class="flexGap"><span>Badges</span>1</div>
 
-              <button class="viewBtn">View Profile</button>
+              <div class="viewBtn">
+                <a href="communityProfile.php">View Profile</a>
+              </div>
             </div>
           </div>
         </div>

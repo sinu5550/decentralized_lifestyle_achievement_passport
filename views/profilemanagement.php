@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Profile Management</title>
     <link rel="stylesheet" href="../assets/css/style-R.css" />
+    <link rel="stylesheet" href="../assets/css/menuStyle.css" />
   </head>
   <body>
     <div class="flex">
+      <div class="menubar">
+            <?php require_once "menubar.php"; ?>
+      </div>
       <div class="container">
         
         <div class="heading">
