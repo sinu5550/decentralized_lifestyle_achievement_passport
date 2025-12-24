@@ -14,11 +14,11 @@
         src="../assets/menuImages/dashboard.png"
         alt=""
         class="icons" />Dashboard</a>
-    <a href="../views/document.php"><img
+    <a href="../views/personalized_dashboard.php"><img
         src="../assets/menuImages/user.png"
         alt=""
         class="icons" />Profile</a>
-    <a href="../views/document.php"><img src="../assets/menuImages/goal.png" alt="" class="icons" />Goals</a>
+    <a href="../views/profilemanagement.php"><img src="../assets/menuImages/goal.png" alt="" class="icons" />Goals</a>
 
     <a href="../views/document.php"><img
         src="../assets/menuImages/trophy.png"
