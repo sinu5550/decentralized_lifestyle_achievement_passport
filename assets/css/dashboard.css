@@ -1,0 +1,180 @@
+body {
+  background-color: #f8faff;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+}
+
+.flex {
+  display: flex;
+}
+.container {
+  width: 800px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.welcome-header h2 {
+  margin-bottom: 5px;
+  font-size: 20px;
+  color: #333;
+}
+
+.welcome-header p {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+
+.scoring {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  border: 1px solid #f0f0f0;
+}
+
+.card h3 {
+  font-size: 11px;
+  color: #888;
+  margin: 0 0 5px 0;
+  text-transform: uppercase;
+}
+
+.card p {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-icon {
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* Card Colors */
+.purple-card .card-icon {
+  background: #9b59b6;
+}
+.yellow-card .card-icon {
+  background: #f1c40f;
+}
+.blue-card .card-icon {
+  background: #3498db;
+}
+.green-card .card-icon {
+  background: #2ecc71;
+}
+
+/* Quick Actions */
+.quickSection h3 {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.Quick_Actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.activity {
+  background: white;
+  padding: 20px 15px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  text-align: left;
+  transition: transform 0.2s;
+}
+
+.activity svg {
+  margin-bottom: 15px;
+}
+
+.activity h3 {
+  font-size: 14px;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.activity p {
+  font-size: 11px;
+  color: #888;
+  margin: 0;
+}
+
+/* Quick Action Border Colors */
+.act-blue {
+  border: 1px solid #5b4df5;
+}
+.act-green {
+  border: 1px solid #2ecc71;
+}
+.act-purple {
+  border: 1px solid #9b59b6;
+}
+.act-orange {
+  border: 1px solid #e67e22;
+}
+
+/* Recent Activity */
+.recent-activity {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background: #f9faff;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.act-icon {
+  background: #e0e7ff;
+  color: #5b4df5;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.act-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.act-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.act-time {
+  font-size: 11px;
+  color: #999;
+}

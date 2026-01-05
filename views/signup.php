@@ -1,72 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up</title>
-   <link rel="stylesheet" href="../assets/css/style-R.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/css/signup.css" />
+</head>
+<body>
     <div class="flex">
-      <div class="container">
-        <div class="heading">
-          <h3>Creat Account</h3>
-          <h4>Join the Lifestyle Achivement Passport</h4>
-        </div>
-        <div class="namefield">
-          <div>
-            <label for="fname">First Name</label>
-            <br />
-            <input
-              id="fname"
-              type="text"
-              name="First Name"
-              onblur="testname()"
-            />
-          </div>
-          <div>
-            <label for="lname">Last Name</label>
-            <br />
-            <input
-              id="lname"
-              type="text"
-              name="Last Name"
-              onblur="testname()"
-            />
-          </div>
-        </div>
-        <div id="nameError"></div>
-        <br />
-        <div>
-          <label for="email">Email</label>
-          <br />
-          <input id="email" type="email" name="email" 
-          onblur="validateEmail()"/>
-          <p id="emailerror"></p>
-          <label for="password">Password</label>
-          <br />
-          <input
-            id="password"
-            type="password"
-            name="password"
-            onblur="testPassword()"
-          />
-          <p id="pError"></p>
+        <form action="../controllers/signupCheck.php" method="post" class="container">
+            <div class="heading">
+                <h3>Create Account</h3>
+                <h4>Join the Lifestyle Achievement Passport</h4>
+            </div>
+            <div class="field-group">
+              <div class="namefield">
+                <div>
+                    <label for="fname">First Name</label>
+                    <input id="fname" type="text" name="First_Name" onblur="testname()" placeholder="First name" />
+                </div>
+                <div >
+                    <label for="lname">Last Name</label>
+                    <input id="lname" type="text" name="Last_Name" onblur="testname()" placeholder="Last name" />
+                </div>
+              </div>
+              <small id="nameError" class="error-msg"></small>
+            </div>
+            
+            
 
-          <label for="confirmPassword">Confirm Password</label>
-          <br />
-          <input id="cpassword" type="password" name="confirmPassword" onblur="confirmPassword()" />
-          <p id="cperror"></p>
-        </div>
-        <br />
-        <div>
-          <input type="submit" value="Creat Account" />
-        </div>
-        <div>
-          <h4>Already have an account? <a href="signin.php">Sign In</a></h4>
-        </div>
-      </div>
+            <div class="field-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" name="email" onblur="validateEmail()" placeholder="Enter your email" />
+                <small id="emailerror" class="error-msg"></small>
+            </div>
+
+            <div class="field-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" onblur="testPassword()" placeholder="Create password" />
+                <small id="pError" class="error-msg"></small>
+            </div>
+
+            <div class="field-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input id="cpassword" type="password" name="confirmPassword" onblur="confirmPassword()" placeholder="Confirm password" />
+                <small id="cperror" class="error-msg"></small>
+            </div>
+
+            <div class="button-group">
+                <input type="submit" name="submit" value="Create Account" class="btn-submit" />
+            </div>
+
+            <div class="signup-footer">
+                <h4>Already have an account? <a href="signin.php">Sign In</a></h4>
+            </div>
+        </form>
     </div>
     <script src="../assets/js/script.js"></script>
-  </body>
+</body>
 </html>

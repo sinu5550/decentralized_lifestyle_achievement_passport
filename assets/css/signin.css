@@ -1,0 +1,115 @@
+body {
+  font-family: Arial, sans-serif;
+}
+.flex {
+  height: 100vh;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: red;
+  width: 380px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.heading h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.heading h4 {
+  margin-top: 6px;
+  font-size: 14px;
+  color: gray;
+}
+
+.field-group {
+  margin-bottom: 15px;
+}
+
+.field-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+}
+
+.input-wrapper input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.input-wrapper input:focus {
+  outline: none;
+  border-color: #5b4df5;
+}
+
+.input-wrapper:focus-within .input-icon {
+  color: #5b4df5;
+}
+.forgot-link {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.forgot-link a {
+  font-size: 13px;
+  color: #5b4df5;
+  text-decoration: none;
+}
+
+.button-group {
+  margin-bottom: 20px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background: #5b4df5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.signup-footer {
+  text-align: center;
+}
+
+.signup-footer h4 {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.signup-footer a {
+  color: #5b4df5;
+  text-decoration: none;
+}

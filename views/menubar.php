@@ -32,7 +32,7 @@
         src="../assets/menuImages/activity.png"
         alt=""
         class="icons" />Activity Log</a>
-    <a href="../views/document.php"><img src="../assets/menuImages/time.png" alt="" class="icons" />Time
+    <a href="../views/time_visualization.php"><img src="../assets/menuImages/time.png" alt="" class="icons" />Time
       Visualization</a>
     <a href="../views/document.php"><img src="../assets/menuImages/book.png" alt="" class="icons" />Learning
       Progress</a>
