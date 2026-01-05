@@ -1,0 +1,171 @@
+body {
+  background-color: #f8faff;
+}
+
+.flex {
+  display: flex;
+}
+.main-content {
+  width: 800px;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.header-section {
+  margin-bottom: 30px;
+}
+
+.header-section h2 {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
+}
+
+.header-section p {
+  color: #888;
+  font-size: 14px;
+}
+
+
+.visualization-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
+}
+
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.input-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.time-input-group {
+  display: flex;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f8f8f8;
+}
+
+.time-input-group label {
+  flex: 1;
+  font-size: 14px;
+  color: #555;
+}
+
+.time-input-group input {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  outline: none;
+}
+
+.time-input-group input:focus {
+  border-color: #5b4df5;
+}
+
+.unit {
+  margin-left: 10px;
+  font-size: 13px;
+  color: #999;
+}
+
+.total-bar {
+  margin-top: 25px;
+  padding: 15px;
+  background: #fcfcfc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
+
+.hours-count {
+  font-weight: 600;
+}
+
+.save-time-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #e0e4e8; 
+  color: #888;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.chart-toggle {
+  display: flex;
+  background: #f0f2f5;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.chart-toggle button {
+  border: none;
+  background: transparent;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #999;
+}
+
+.chart-toggle button.active {
+  background: white;
+  color: #5b4df5;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.chart-placeholder {
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.empty-state p {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #bbb;
+}
