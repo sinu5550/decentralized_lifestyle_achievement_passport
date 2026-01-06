@@ -1,6 +1,7 @@
 <?php
 require_once('../models/goalModel.php');
 require_once('../models/siyan_userModel.php');
+require_once('../models/notificationModel.php');
 session_start();
 
 if (!isset($_COOKIE['status'])) {
@@ -27,7 +28,8 @@ if (isset($_POST['create_goal'])) {
             'deadline' => $deadline
         ];
 
-        if (createGoal($userId, $goalData)) {
+        if (createGoal($userId, $title, $description, $deadline)) {
+            createNotification($userId, 'New Goal Set', "You committed to: $title", 'success');
             header('location: ../views/goals.php?success=created');
         } else {
             header('location: ../views/goals.php?error=db_error');
@@ -44,7 +46,13 @@ if (isset($_POST['create_goal'])) {
 
 } elseif (isset($_GET['toggle_milestone'])) {
     $milestoneId = $_GET['toggle_milestone'];
-    toggleMilestone($milestoneId);
+    $success = toggleMilestone($milestoneId);
+
+    if (isset($_GET['ajax'])) {
+        echo json_encode(['success' => $success]);
+        exit();
+    }
+
     header('location: ../views/goals.php');
 
 } elseif (isset($_GET['delete_milestone'])) {

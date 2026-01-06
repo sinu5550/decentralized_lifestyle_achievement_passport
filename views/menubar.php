@@ -1,3 +1,18 @@
+<?php
+// Assuming $email and $user are available from the parent view context, otherwise we might need to fetch user again.
+// To be safe and efficient, we check if $user is set, if not fetch it.
+if(!isset($user) && isset($_SESSION['email'])) {
+require_once('../models/userModel.php');
+$user = getUserInfo($_SESSION['email']);
+}
+if(isset($user['id'])) {
+require_once('../models/notificationModel.php');
+$notifCount = getUnreadCount($user['id']);
+} else {
+$notifCount = 0;
+}
+?>
+
 <nav class="sidebar">
   <h1>LAP</h1>
   <p>Lifestyle Achievement <br />Passport</p>
@@ -11,8 +26,15 @@
     <a href="../views/goals.php"><img src="../assets/menuImages/goal.png" alt="" class="icons" />Goals</a>
 
     <a href="../views/challenges.php"><img src="../assets/menuImages/trophy.png" alt="" class="icons" />Challenges</a>
-    <a href="../views/document.php"><img src="../assets/menuImages/notification.png" alt=""
-        class="icons" />Notifications</a>
+    <a href="../views/notifications.php">
+      <img src="../assets/menuImages/notification.png" alt="" class="icons" />
+      Notifications
+      <?php if ($notifCount > 0): ?>
+        <span class="menu-badge">
+          <?= $notifCount ?>
+        </span>
+      <?php endif; ?>
+    </a>
     <a href="../views/document.php"><img src="../assets/menuImages/activity.png" alt="" class="icons" />Activity Log</a>
     <a href="../views/time_visualization.php"><img src="../assets/menuImages/time.png" alt="" class="icons" />Time
       Visualization</a>

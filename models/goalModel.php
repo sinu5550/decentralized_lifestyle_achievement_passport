@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . '/db.php');
 
-function createGoal($userId, $goal)
+function createGoal($userId, $title, $description, $deadline)
 {
     $con = getConnection();
-    $title = mysqli_real_escape_string($con, $goal['title']);
-    $description = mysqli_real_escape_string($con, $goal['description']);
-    $deadline = mysqli_real_escape_string($con, $goal['deadline']);
+    $title = mysqli_real_escape_string($con, $title);
+    $description = mysqli_real_escape_string($con, $description);
+    $deadline = mysqli_real_escape_string($con, $deadline);
 
     $sql = "INSERT INTO user_goal (user_id, title, description, deadline, status, progress) 
             VALUES ('$userId', '$title', '$description', '$deadline', 'Active', 0)";
