@@ -34,7 +34,7 @@ $availableChallenges = getAvailableChallenges($userId);
                 <h3>Challenges</h3>
                 <p>Join challenges to earn points and build habits.</p>
 
-               
+
                 <div class="challenge-section">
                     <h4>My Active Challenges</h4>
                     <?php if (empty($activeChallenges)): ?>
@@ -67,7 +67,7 @@ $availableChallenges = getAvailableChallenges($userId);
                                         <?php if ($c['status'] == 'Joined'): ?>
                                             <a href="../controllers/challengeController.php?complete=<?= $c['id'] ?>"
                                                 class="challenge-btn btn-complete"
-                                                onclick="return confirm('Mark this challenge as complete?')">Mark Complete</a>
+                                                onclick="handleChallengeAction(event, this.href, 'complete')">Mark Complete</a>
                                         <?php else: ?>
                                             <div style="text-align:center; color:#2ecc71; font-weight:bold;">Completed!</div>
                                         <?php endif; ?>
@@ -78,7 +78,7 @@ $availableChallenges = getAvailableChallenges($userId);
                     <?php endif; ?>
                 </div>
 
-             
+
                 <div class="challenge-section">
                     <h4>Available Challenges</h4>
                     <div class="challenge-grid">
@@ -102,7 +102,8 @@ $availableChallenges = getAvailableChallenges($userId);
                                         </span>
                                     </div>
                                     <a href="../controllers/challengeController.php?join=<?= $c['id'] ?>"
-                                        class="challenge-btn btn-join">Join Challenge</a>
+                                        class="challenge-btn btn-join"
+                                        onclick="handleChallengeAction(event, this.href, 'join')">Join Challenge</a>
                                 </div>
                             </div>
                         <?php endforeach; ?>

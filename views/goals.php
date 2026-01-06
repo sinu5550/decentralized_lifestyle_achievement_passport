@@ -36,7 +36,7 @@ $myGoals = getUserGoals($userId);
                 <!-- Create Goal Section -->
                 <div class="create-goal-form">
                     <h4>Create New Goal</h4>
-                    <form action="../controllers/goalController.php" method="POST">
+                    <form action="../controllers/goalController.php" method="POST" onsubmit="return validateGoalForm(event)">
                         <div class="form-group">
                             <label>Goal Title</label>
                             <input type="text" name="title" required placeholder="e.g. Learn React Native">
@@ -77,10 +77,10 @@ $myGoals = getUserGoals($userId);
                                     <strong>Milestones</strong>
                                     <?php if (!empty($goal['milestones'])): ?>
                                         <?php foreach ($goal['milestones'] as $ms): ?>
-                                            <div class="milestone-item <?= $ms['is_completed'] ? 'done' : '' ?>">
+                                            <div class="milestone-item <?= $ms['is_completed'] ? 'done' : '' ?>" id="milestone-<?= $ms['id'] ?>">
                                                 <div style="display:flex; align-items:center; gap:8px;">
-                                                    <a href="../controllers/goalController.php?toggle_milestone=<?= $ms['id'] ?>" 
-                                                       style="text-decoration:none; color:inherit; display:flex; align-items:center;">
+                                                    <a href="#" onclick="toggleMilestone(event, <?= $ms['id'] ?>)"
+                                                       style="text-decoration:none; color:inherit; display:flex; align-items:center;" class="ms-icon">
                                                         <?php if ($ms['is_completed']): ?>
                                                             <img src="../assets/menuImages/checkmark.png" width="16" alt="Done">
                                                         <?php else: ?>
