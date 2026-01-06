@@ -1,3 +1,13 @@
+<?php
+
+require_once('../models/db.php');
+require_once('../models/siyan_userModel.php');
+require_once('../controllers/authCheck.php');
+
+$email = $_SESSION['email'];
+$myDocs = getUserDocuments($email);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,27 +30,42 @@
         <p>Manage your personal documents</p>
         <div class="uploadDoc">
           <div class="flex fileUp">
-            <div>
-              <div class="center">
-                <img src="../assets/images/file.png" alt="" style="width: 13px; height: 13px; margin-right: 8px;" /><span>
-                  Personal Documents
-                </span>
-              </div>
+            <div class="center">
+              <img src="../assets/images/file.png" style="width: 13px; height: 13px; margin-right: 8px;" />
+              <span>Personal Documents</span>
             </div>
-            <form>
-              <div class="upBtn">
+
+            <form id="myform" enctype="multipart/form-data">
+              <div class="upBtn" style="cursor: pointer;" onclick="document.getElementById('fileInput').click();">
                 <img src="../assets/images/upload.png" style="width: 13px; height: 13px; margin-right: 8px;" alt="" />
-                <a type="submit">Upload Document</a>
+                <a>Upload Document</a>
               </div>
+              <input type="file" id="fileInput" name="myfile" style="display:none;" onchange="uploadFile()">
             </form>
           </div>
-          <div id="document">No documents uploaded yet</div>
+
+          <div id="document" style="margin-top: 15px; padding: 10px; border: 1px dashed #ccc; border-radius: 5px; ">
+            <?php if (empty($myDocs)): ?>
+              <p id="emptyMsg">No documents uploaded yet.</p>
+            <?php else: ?>
+              <?php foreach ($myDocs as $doc): ?>
+                <div style="display: flex; justify-content:space-between; align-items: center; gap: 15px; border: 1px solid #ddd; margin:10px; padding: 10px; border-radius: 5px; width:90%;">
+                  <div>
+                    <img src="../assets/images/file.png" style="width: 16px; height: 16px;" />
+                    <strong><?= htmlspecialchars($doc['file_name']) ?></strong>
+                  </div>
+                  <a href="<?= $doc['file_path'] ?>" download style="background: #28a745; color: white; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">Download</a>
+                </div>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
 
-  <script src="../assets/js/script.js"></script>
+  <script src="../assets/js/siyanScript.js"></script>
 </body>
 
 </html>
