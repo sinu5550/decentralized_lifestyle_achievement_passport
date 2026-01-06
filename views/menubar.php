@@ -10,7 +10,7 @@
     <a href="../views/profilemanagement.php"><img src="../assets/menuImages/user.png" alt="" class="icons" />Profile</a>
     <a href="../views/goals.php"><img src="../assets/menuImages/goal.png" alt="" class="icons" />Goals</a>
 
-    <a href="../views/document.php"><img src="../assets/menuImages/trophy.png" alt="" class="icons" />Challenges</a>
+    <a href="../views/challenges.php"><img src="../assets/menuImages/trophy.png" alt="" class="icons" />Challenges</a>
     <a href="../views/document.php"><img src="../assets/menuImages/notification.png" alt=""
         class="icons" />Notifications</a>
     <a href="../views/document.php"><img src="../assets/menuImages/activity.png" alt="" class="icons" />Activity Log</a>
