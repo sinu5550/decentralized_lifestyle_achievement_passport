@@ -3,12 +3,7 @@
   <p>Lifestyle Achievement <br />Passport</p>
   <br />
   <hr />
-  <div style="margin: 10px 0px">
-    <h3>Welcome back, <span style="font-weight: 100">John Doe</span></h3>
-    <span>Manage your lifestyle achievement</span>
-  </div>
 
-  <hr />
   <div class="mentuItems">
     <a href="../views/personalized_dashboard.php"><img
         src="../assets/menuImages/dashboard.png"
@@ -59,7 +54,7 @@
 
     <div class="logout">
       <hr />
-      <a href="../views/signin.php"><img src="../assets/menuImages/logout.png" alt="" class="icons" />
+      <a href="../controllers/logout.php"><img src="../assets/menuImages/logout.png" alt="" class="icons" />
         <span style="color: red">Logout</span>
       </a>
     </div>
