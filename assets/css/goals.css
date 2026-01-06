@@ -1,0 +1,147 @@
+.goal-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #4834d4;
+}
+
+.goal-card.completed {
+    border-left-color: #2ecc71;
+}
+
+.goal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-bar-bg {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #4834d4;
+    border-radius: 5px;
+    transition: width 0.3s ease;
+}
+
+.completed .progress-bar-fill {
+    background-color: #2ecc71;
+}
+
+.create-goal-form {
+    background: #f6f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #4834d4;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+}
+
+.goal-actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Milestone Section Styles */
+.milestones-section {
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.milestone-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f9f9f9;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.milestone-item.done {
+    text-decoration: line-through;
+    color: #888;
+    background: #eefcf3;
+}
+
+.delete-ms {
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.add-milestone-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.add-milestone-form input {
+    flex: 1;
+    padding: 8px;
+    font-size: 0.9em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-milestone-form button {
+    padding: 8px 15px;
+    background: #4834d4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
