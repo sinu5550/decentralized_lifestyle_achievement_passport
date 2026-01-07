@@ -1,4 +1,4 @@
--- Table structure for table `user_goal`
+
 
 CREATE TABLE IF NOT EXISTS `user_goal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
