@@ -1,15 +1,14 @@
 <?php
-// Assuming $email and $user are available from the parent view context, otherwise we might need to fetch user again.
-// To be safe and efficient, we check if $user is set, if not fetch it.
-if(!isset($user) && isset($_SESSION['email'])) {
-require_once('../models/userModel.php');
-$user = getUserInfo($_SESSION['email']);
+
+if (!isset($user) && isset($_SESSION['email'])) {
+  require_once('../models/userModel.php');
+  $user = getUserInfo($_SESSION['email']);
 }
-if(isset($user['id'])) {
-require_once('../models/notificationModel.php');
-$notifCount = getUnreadCount($user['id']);
+if (isset($user['id'])) {
+  require_once('../models/notificationModel.php');
+  $notifCount = getUnreadCount($user['id']);
 } else {
-$notifCount = 0;
+  $notifCount = 0;
 }
 ?>
 
@@ -46,7 +45,7 @@ $notifCount = 0;
     <a href="../views/community.php"><img src="../assets/menuImages/community.png" alt="" class="icons" />Community</a>
     <a href="../views/verification.php"><img src="../assets/menuImages/checkmark.png" alt=""
         class="icons" />Verification</a>
-    <a href="../views/document.php"><img src="../assets/menuImages/cv.png" alt="" class="icons" />CV
+    <a href="../views/cv_generator.php"><img src="../assets/menuImages/cv.png" alt="" class="icons" />CV
       Generator</a>
     <a href="../views/support.php"><img src="../assets/menuImages/support.png" alt="" class="icons" />Support</a>
 
