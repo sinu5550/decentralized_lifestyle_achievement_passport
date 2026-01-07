@@ -16,6 +16,10 @@
             if($status){
                 setcookie('status', 'true', time()+3000, '/');
                 $_SESSION['email'] = $email;
+                
+                $userInfo = getUserInfo($email);
+                logActivity($userInfo['id'], 'User logged in');
+
                 header('location: ../views/personalized_dashboard.php');
             }else{
                 echo "Invalid email/password...";
