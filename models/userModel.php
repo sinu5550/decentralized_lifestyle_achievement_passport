@@ -90,4 +90,15 @@ function resetPassword($email, $password)
         return false;
     }
 }
+
+function updatePassword($userId, $password)
+{
+    $con = getConnection();
+    $sql = "UPDATE users SET password='$password' WHERE id='$userId'";
+    if (mysqli_query($con, $sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>
