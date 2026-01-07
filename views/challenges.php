@@ -35,7 +35,7 @@ $availableChallenges = getAvailableChallenges($userId);
                 <p>Join challenges to earn points and build habits.</p>
 
 
-                <div class="challenge-section">
+           <div class="challenge-section">
                     <h4>My Active Challenges</h4>
                     <?php if (empty($activeChallenges)): ?>
                         <p style="color:#888; font-style:italic;">You haven't joined any challenges yet.</p>
@@ -73,9 +73,11 @@ $availableChallenges = getAvailableChallenges($userId);
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                            <?php endforeach; ?>
+                            <?php endforeach;
+                             ?>
                         </div>
-                    <?php endif; ?>
+                    <?php endif; 
+                    ?>
                 </div>
 
 
