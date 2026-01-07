@@ -16,7 +16,7 @@ function login($user)
 function addUser($user)
 {
     $con = getConnection();
-    $sql = "insert into users values(null, '{$user['fullname']}', '{$user['email']}', '{$user['password']}')";
+    $sql = "INSERT INTO users (fullName, email, password) VALUES ('{$user['fullname']}', '{$user['email']}', '{$user['password']}')";
     if (mysqli_query($con, $sql)) {
         return true;
     } else {
