@@ -56,6 +56,6 @@
             </div>
         </form>
     </div>
-    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/rumaiyaScript.js"></script>
 </body>
 </html>
