@@ -4,20 +4,32 @@ function confirmDelete(message = 'Are you sure?') {
 
 
 
-async function handleAjaxAction(event, url, callback) {
+
+function handleAjaxAction(event, url, callback) {
     event.preventDefault();
-    try {
-        const response = await fetch(url + '&ajax=true');
-        const data = await response.json();
-        if (data.success) {
-            callback(data);
-        } else {
-            alert(data.error || 'Action failed');
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", url + '&ajax=true', true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    const data = JSON.parse(xhr.responseText);
+                    if (data.success) {
+                        callback(data);
+                    } else {
+                        alert(data.error || 'Action failed');
+                    }
+                } catch (e) {
+                    console.error('JSON Parse Error', e);
+                    alert('Invalid response from server');
+                }
+            } else {
+                console.error('Error:', xhr.statusText);
+                alert('Network error');
+            }
         }
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Network error');
-    }
+    };
+    xhr.send();
 }
 
 
@@ -95,7 +107,7 @@ function validateGoalForm(event) {
 
 
 function updateCV() {
-    
+
     document.getElementById('cvName').textContent = document.getElementById('inpName').value || 'Your Name';
     document.getElementById('cvTitle').textContent = document.getElementById('inpTitle').value || 'Job Title';
     document.getElementById('cvEmail').textContent = document.getElementById('inpEmail').value || 'email@example.com';
