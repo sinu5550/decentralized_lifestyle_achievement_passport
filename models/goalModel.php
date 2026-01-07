@@ -26,8 +26,7 @@ function getUserGoals($userId)
 
     $goals = [];
     while ($row = mysqli_fetch_assoc($result)) {
-        // Fetch milestones for each goal
-        $row['milestones'] = getMilestones($row['id']);
+       $row['milestones'] = getMilestones($row['id']);
         $goals[] = $row;
     }
     return $goals;

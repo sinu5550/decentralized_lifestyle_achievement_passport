@@ -22,10 +22,10 @@ if (mysqli_query($con, $sql)) {
     echo "Error creating table: " . mysqli_error($con) . "<br>";
 }
 
-// Optional: Add a test goal for user 1 to verify
+
 $testSql = "INSERT INTO user_goal (user_id, title, description, deadline, status, progress) 
             VALUES (1, 'Test Goal', 'This is a test goal created by the setup script.', '2026-12-31', 'Active', 0)";
-// We check if it exists first to avoid duplicates on refresh
+
 $checkSql = "SELECT * FROM user_goal WHERE title='Test Goal' AND user_id=1";
 $checkRes = mysqli_query($con, $checkSql);
 if (mysqli_num_rows($checkRes) == 0) {
