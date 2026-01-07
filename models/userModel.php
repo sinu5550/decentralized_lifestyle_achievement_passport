@@ -79,4 +79,15 @@ function getRecentActivity($userId, $limit = 5)
     }
     return $activities;
 }
+
+function resetPassword($email, $password)
+{
+    $con = getConnection();
+    $sql = "UPDATE users SET password='$password' WHERE email='$email'";
+    if (mysqli_query($con, $sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 ?>

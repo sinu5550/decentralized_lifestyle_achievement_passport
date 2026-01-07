@@ -25,7 +25,7 @@ if (isset($_POST['update_profile'])) {
         'bio' => $bio
     ];
 
-    // AJAX Handle File Upload (Independent)
+    // AJAX Handle File Upload 
     if (isset($_POST['ajax_upload_pic'])) {
         $response = ['success' => false, 'error' => 'Unknown error'];
 
@@ -63,9 +63,9 @@ if (isset($_POST['update_profile'])) {
         exit();
     }
     
-    // Normal Post Handling continues... (but reusing logic logic might be messy, so we kept it separate)
+   
     
-    // Handle File Upload (Legacy/Form Submit - existing logic)
+   
     if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
         $uploadDir = '../assets/uploadProfilePic/';
         
