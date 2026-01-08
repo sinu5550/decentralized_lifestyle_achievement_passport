@@ -35,7 +35,16 @@
   padding-bottom: 0px;
   margin-bottom: 0px;
   position: relative;
+  overflow-y: auto;
 }
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
+}
+
 .logout {
   width: 197px;
   position: absolute;

@@ -12,7 +12,7 @@ function uploadFile() {
   docDiv.innerHTML = "Uploading...";
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/web-project/controllers/upload_doc.php", true);
+  xhttp.open("POST", "../controllers/upload_doc.php", true);
 
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -60,7 +60,7 @@ function deleteFile(id) {
     if(!confirm('Are you sure you want to delete this document?')) return;
 
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/web-project/controllers/delete_doc.php", true);
+    xhttp.open("POST", "../controllers/delete_doc.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
     xhttp.onreadystatechange = function() {
@@ -96,7 +96,7 @@ function uploadVerificationFile() {
   var previousContent = docDiv.innerHTML;
 
   var xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "/web-project/controllers/upload_verification.php", true);
+  xhttp.open("POST", "../controllers/upload_verification.php", true);
 
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
@@ -145,7 +145,7 @@ function uploadVerificationFile() {
 
 function verifyFile(id) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "/web-project/controllers/verify_doc.php", true);
+    xhttp.open("POST", "../controllers/verify_doc.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     
     xhttp.onreadystatechange = function() {
