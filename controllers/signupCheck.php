@@ -12,6 +12,8 @@
 
         if($fname == "" || $lname == "" || $email == "" || $password == ""){
             echo "Null submission... please fill all fields!";
+        } elseif(strlen($password) < 8) {
+            echo "Password must be at least 8 characters!";
         } elseif($password !== $confirmP) {
             echo "Passwords do not match!";
         } else {
