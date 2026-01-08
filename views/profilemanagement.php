@@ -24,7 +24,7 @@
     if (isset($_GET['error'])) {
         if ($_GET['error'] == 'short_password') echo "<script>alert('Password must be at least 8 characters long!');</script>";
         if ($_GET['error'] == 'update_failed') echo "<script>alert('Failed to update profile.');</script>";
-        if ($_GET['error'] == 'db_error') echo "<script>alert('Database error. Please try again.');</script>";
+        
         if ($_GET['error'] == 'password_mismatch') echo "<script>alert('Passwords do not match!');</script>";
     }
     ?>
