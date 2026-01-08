@@ -32,7 +32,12 @@ $allUsers = getAllUsers();
                 <div class="cardCenter">
                   <img class="profilePic" src="../assets/images/profile.PNG" alt="" />
                   <p><strong><?= htmlspecialchars($u["fullName"]) ?></strong></p>
-                  <p>⭐ 0(0)</p>
+                  <?php 
+                      $ratingData = getUserAverageRating($u['id']);
+                      $avgRating = number_format($ratingData['avg_rating'], 1);
+                      $count = $ratingData['count'];
+                  ?>
+                  <p>⭐ <?= $avgRating ?> (<?= $count ?>)</p>
                 </div>
                 <div class="flexGap"><span>Points</span>100</div>
                 <div class="flexGap"><span>Badges</span>1</div>

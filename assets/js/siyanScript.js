@@ -19,17 +19,25 @@ function uploadFile() {
       var response = this.responseText.trim();
 
       if (response.includes("Done")) {
-        var path = response.split("|")[1];
+        var parts = response.split("|");
+        var path = parts[1];
+        var originalFileName = parts[2];
+        var id = parts[3];
 
         var newFileHtml = `
-        <div style="display: flex; justify-content:space-between; align-items: center; gap: 15px; border: 1px solid #ddd; margin:10px; padding: 10px; border-radius: 5px; width:90%;">
+        <div id="doc-${id}" style="display: flex; justify-content:space-between; align-items: center; gap: 15px; border: 1px solid #ddd; margin:10px; padding: 10px; border-radius: 5px; width:90%;">
             <div>
             <img src="../assets/images/file.png" style="width: 16px; height: 16px;" />
             <strong>${originalFileName}</strong>
             </div>
-            <a href="${path}" download="${originalFileName}" style="background: #28a745; color: white; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">
-                Download
-            </a>
+            <div style="display: flex; gap: 10px;">
+                <a href="${path}" download="${originalFileName}" style="background: #28a745; color: white; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">
+                    Download
+                </a>
+                <button onclick="deleteFile(${id})" style="background: #dc3545; color: white; padding: 5px 12px; border: none; border-radius: 4px; font-size: 14px; cursor: pointer;">
+                    Delete
+                </button>
+            </div>
         </div>`;
 
         if (previousContent.includes("No documents uploaded yet")) {
@@ -45,4 +53,32 @@ function uploadFile() {
   };
 
   xhttp.send(formData);
+}
+
+function deleteFile(id) {
+    console.log("Delete called for ID: " + id);
+    if(!confirm('Are you sure you want to delete this document?')) return;
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "/web-project/controllers/delete_doc.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if(this.responseText.trim() === "Success") {
+                var elem = document.getElementById("doc-" + id);
+                if(elem) elem.remove();
+                
+                // Check if empty
+                var docDiv = document.getElementById("document");
+                if(docDiv.children.length === 0) {
+                    docDiv.innerHTML = '<p id="emptyMsg">No documents uploaded yet.</p>';
+                }
+            } else {
+                alert("Failed to delete: " + this.responseText);
+            }
+        }
+    };
+    
+    xhttp.send("id=" + id);
 }

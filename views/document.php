@@ -49,12 +49,15 @@ $myDocs = getUserDocuments($email);
               <p id="emptyMsg">No documents uploaded yet.</p>
             <?php else: ?>
               <?php foreach ($myDocs as $doc): ?>
-                <div style="display: flex; justify-content:space-between; align-items: center; gap: 15px; border: 1px solid #ddd; margin:10px; padding: 10px; border-radius: 5px; width:90%;">
+                <div id="doc-<?= $doc['id'] ?>" style="display: flex; justify-content:space-between; align-items: center; gap: 15px; border: 1px solid #ddd; margin:10px; padding: 10px; border-radius: 5px; width:90%;">
                   <div>
                     <img src="../assets/images/file.png" style="width: 16px; height: 16px;" />
                     <strong><?= htmlspecialchars($doc['file_name']) ?></strong>
                   </div>
-                  <a href="<?= $doc['file_path'] ?>" download style="background: #28a745; color: white; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">Download</a>
+                  <div style="display: flex; gap: 10px;">
+                    <a href="<?= $doc['file_path'] ?>" download style="background: #28a745; color: white; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 14px;">Download</a>
+                    <button onclick="deleteFile(<?= $doc['id'] ?>)" style="background: #dc3545; color: white; padding: 5px 12px; border: none; border-radius: 4px; font-size: 14px; cursor: pointer;">Delete</button>
+                  </div>
                 </div>
               <?php endforeach; ?>
             <?php endif; ?>
@@ -65,7 +68,7 @@ $myDocs = getUserDocuments($email);
     </div>
   </div>
 
-  <script src="../assets/js/siyanScript.js"></script>
+  <script src="../assets/js/siyanScript.js?v=<?= time() ?>"></script>
 </body>
 
 </html>
