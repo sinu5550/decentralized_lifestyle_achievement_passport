@@ -9,6 +9,8 @@
 
         if($email == "" || $password == "" || $confirm_password == ""){
             echo "Null value... please type again!";
+        } else if(strlen($password) < 8){
+            echo "Password must be at least 8 characters!";
         } else if($password != $confirm_password){
             echo "Passwords do not match!";
         } else {

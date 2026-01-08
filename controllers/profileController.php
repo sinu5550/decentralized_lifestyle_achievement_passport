@@ -10,6 +10,39 @@ if (!isset($_SESSION['email'])) {
 $email = $_SESSION['email'];
 $currentUser = getUserInfo($email);
 
+// AJAX Handle File Upload 
+if (isset($_POST['ajax_upload_pic'])) {
+    if (isset($_FILES['profile_pic'])) {
+        $email = $_SESSION['email'];
+        $originalName = $_FILES['profile_pic']['name'];
+
+        $uploadDir = '../assets/uploadProfilePic/';
+        if (!file_exists($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $parts = explode('.', $originalName);
+        $ext = end($parts);
+
+        $fileName = time() . "_" . substr($email, 0, 5) . "." . $ext;
+        $targetPath = $uploadDir . $fileName;
+
+        if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $targetPath)) {
+        
+             if (updateUser($currentUser['id'], ['fullName' => $currentUser['fullName'], 'email' => $currentUser['email'], 'phone' => $currentUser['phone'], 'bio' => $currentUser['bio'], 'location' => $currentUser['location'], 'profile_pic' => $fileName])) {
+                echo "Done|" . $targetPath;
+            } else {
+                echo "Error: Database update failed";
+            }
+        } else {
+            echo "Error: File move failed";
+        }
+    } else {
+         echo "Error: No file uploaded";
+    }
+    exit();
+}
+
 if (isset($_POST['update_profile'])) {
     $fullName = $_POST['full_name'];
     $emailAddr = $email; 
@@ -23,75 +56,7 @@ if (isset($_POST['update_profile'])) {
         'phone' => $phone,
         'location' => $location,
         'bio' => $bio
-    ];
-
-    // AJAX Handle File Upload 
-    if (isset($_POST['ajax_upload_pic'])) {
-        $response = ['success' => false, 'error' => 'Unknown error'];
-
-        if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
-            $uploadDir = '../assets/uploadProfilePic/';
-            if (!file_exists($uploadDir)) {
-                mkdir($uploadDir, 0777, true);
-            }
-
-            $fileName = time() . '_' . basename($_FILES['profile_pic']['name']);
-            $targetPath = $uploadDir . $fileName;
-            $fileType = strtolower(pathinfo($targetPath, PATHINFO_EXTENSION));
-            $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-
-            if (in_array($fileType, $allowTypes)) {
-                if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $targetPath)) {
-                    // Update DB with new pic
-                    if (updateUser($currentUser['id'], ['fullName' => $currentUser['fullName'], 'email' => $currentUser['email'], 'phone' => $currentUser['phone'], 'bio' => $currentUser['bio'], 'location' => $currentUser['location'], 'profile_pic' => $fileName])) {
-                        $response = ['success' => true, 'filePath' => $targetPath];
-                    } else {
-                        $response = ['success' => false, 'error' => 'Database update failed'];
-                    }
-                } else {
-                    $response = ['success' => false, 'error' => 'File move failed'];
-                }
-            } else {
-                $response = ['success' => false, 'error' => 'Invalid file type'];
-            }
-        } else {
-             $response = ['success' => false, 'error' => 'No file uploaded or error'];
-        }
-        
-        header('Content-Type: application/json');
-        echo json_encode($response);
-        exit();
-    }
-    
-   
-    
-   
-    if (isset($_FILES['profile_pic']) && $_FILES['profile_pic']['error'] == 0) {
-        $uploadDir = '../assets/uploadProfilePic/';
-        
-        
-        if (!file_exists($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
-        }
-
-        $fileName = time() . '_' . basename($_FILES['profile_pic']['name']);
-        $targetPath = $uploadDir . $fileName;
-        $fileType = strtolower(pathinfo($targetPath, PATHINFO_EXTENSION));
-
-        
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-        if (in_array($fileType, $allowTypes)) {
-            if (move_uploaded_file($_FILES['profile_pic']['tmp_name'], $targetPath)) {
-                $data['profile_pic'] = $fileName;
-            } else {
-                header('location: ../views/profilemanagement.php?error=upload_failed');
-                exit();
-            }
-        } else {
-            header('location: ../views/profilemanagement.php?error=invalid_file_type');
-            exit();
-        }
-    }
+    ]; 
 
     if (updateUser($currentUser['id'], $data)) {
        
@@ -108,7 +73,9 @@ if (isset($_POST['update_profile'])) {
     $confirmPassword = $_POST['confirm_password'];
 
     if (!empty($newPassword) && ($newPassword === $confirmPassword)) {
-        if (updatePassword($currentUser['id'], $newPassword)) {
+        if(strlen($newPassword) < 8) {
+            header('location: ../views/profilemanagement.php?error=short_password');
+        } elseif (updatePassword($currentUser['id'], $newPassword)) {
             header('location: ../views/profilemanagement.php?success=password_changed');
         } else {
             header('location: ../views/profilemanagement.php?error=db_error');
