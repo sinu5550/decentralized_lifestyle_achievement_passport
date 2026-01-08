@@ -100,3 +100,32 @@ function deleteDocument($id)
     $sql = "delete from user_documents where id='{$id}'";
     return mysqli_query($con, $sql);
 }
+
+function saveVerificationDocument($email, $fileName, $filePath)
+{
+    $con = getConnection();
+    $sql = "insert into verification_documents (user_email, file_name, file_path, status) VALUES ('$email', '$fileName', '$filePath', 'pending')";
+    if(mysqli_query($con, $sql)){
+        return mysqli_insert_id($con);
+    }
+    return false;
+}
+
+function getVerificationDocuments($email)
+{
+    $con = getConnection();
+    $sql = "select * from verification_documents WHERE user_email = '$email' ORDER BY id DESC";
+    $result = mysqli_query($con, $sql);
+    $docs = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $docs[] = $row;
+    }
+    return $docs;
+}
+
+function verifyDocument($id)
+{
+    $con = getConnection();
+    $sql = "UPDATE verification_documents SET status = 'verified' WHERE id = '$id'";
+    return mysqli_query($con, $sql);
+}
