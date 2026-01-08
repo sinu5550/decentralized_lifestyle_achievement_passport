@@ -2,6 +2,7 @@
 require_once('../models/challengeModel.php');
 require_once('../models/notificationModel.php');
 require_once('../models/siyan_userModel.php');
+require_once('../models/rewardModel.php');
 session_start();
 
 if (!isset($_COOKIE['status'])) {
@@ -17,6 +18,7 @@ $userId = $user['id'];
 if (isset($_GET['join'])) {
     $challengeId = $_GET['join'];
     if (joinChallenge($userId, $challengeId)) {
+        logActivity($userId, "Joined a challenge");
         createNotification($userId, 'Challenge Joined', 'You joined a new challenge. Good luck!', 'info');
 
         if (isset($_GET['ajax'])) {
@@ -36,6 +38,8 @@ if (isset($_GET['join'])) {
     $userChallengeId = $_GET['complete'];
 
     if (completeChallenge($userId, $userChallengeId)) {
+        logActivity($userId, "Completed a challenge");
+        addPoints($userId, 50);
         createNotification($userId, 'Challenge Completed', 'Congratulations! You completed a challenge.', 'success');
 
         if (isset($_GET['ajax'])) {

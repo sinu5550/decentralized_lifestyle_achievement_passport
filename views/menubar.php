@@ -35,15 +35,17 @@ if (isset($user['id'])) {
         </span>
       <?php endif; ?>
     </a>
-    <a href="../views/document.php"><img src="../assets/menuImages/activity.png" alt="" class="icons" />Activity Log</a>
+    <a href="../views/activity_log.php"><img src="../assets/menuImages/activity.png" alt="" class="icons" />Activity Log</a>
     <a href="../views/time_visualization.php"><img src="../assets/menuImages/time.png" alt="" class="icons" />Time
       Visualization</a>
-    <a href="../views/document.php"><img src="../assets/menuImages/book.png" alt="" class="icons" />Learning
+    <a href="../views/learning_progress.php"><img src="../assets/menuImages/book.png" alt="" class="icons" />Learning
       Progress</a>
-    <a href="../views/document.php"><img src="../assets/menuImages/heart.png" alt="" class="icons" />Social
+    <a href="../views/social_impact.php"><img src="../assets/menuImages/heart.png" alt="" class="icons" />Social
       Impact</a>
     <a href="../views/document.php"><img src="../assets/menuImages/file.png" alt="" class="icons" />Documents</a>
     <a href="../views/community.php"><img src="../assets/menuImages/community.png" alt="" class="icons" />Community</a>
+    <a href="../views/reputation.php"><img src="../assets/menuImages/trophy.png" alt="" class="icons" />Reputation</a>
+    <a href="../views/rewards.php"><img src="../assets/menuImages/star.png" alt="" class="icons" />Rewards</a>
     <a href="../views/verification.php"><img src="../assets/menuImages/checkmark.png" alt=""
         class="icons" />Verification</a>
     <a href="../views/cv_generator.php"><img src="../assets/menuImages/cv.png" alt="" class="icons" />CV

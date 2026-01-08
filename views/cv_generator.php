@@ -27,7 +27,7 @@ $user = getUserInfo($email);
         <div class="container">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                 <h3>CV Generator</h3>
-                <button onclick="window.print()" class="button-blue btn-print-action"
+                <button onclick="logAndPrint()" class="button-blue btn-print-action"
                     style="padding:10px 20px;">Download PDF / Print</button>
             </div>
 
@@ -129,6 +129,18 @@ $user = getUserInfo($email);
 
     <script src="../assets/js/IftyScript.js"></script>
     <script>
+        function logAndPrint() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '../controllers/activityController.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send('action=log_action&description=Generated CV');
+            
+            // Allow small delay or just print (print usually blocks, so request might be pending until after or sent immediately)
+            // setTimeout ensures the async send has a moment, though browser might handle it.
+            setTimeout(function() {
+                window.print();
+            }, 500);
+        }
       
         updateCV();
     </script>
