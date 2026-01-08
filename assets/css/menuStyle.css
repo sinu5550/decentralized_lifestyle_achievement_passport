@@ -34,8 +34,8 @@
   padding: 15px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  position: relative;
-  overflow-y: auto;
+  /* position: relative; */
+  /* overflow-y: auto; */
 }
 .sidebar::-webkit-scrollbar {
   width: 4px;
@@ -47,7 +47,7 @@
 
 .logout {
   width: 197px;
-  position: absolute;
+  /* position: absolute; */
   bottom: 10px;
 }
 .icons {
