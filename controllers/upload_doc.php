@@ -25,8 +25,9 @@ if (isset($_FILES['myfile'])) {
     $des = $dir . $newName;
 
     if (move_uploaded_file($_FILES['myfile']['tmp_name'], $des)) {
-        if (saveDocument($email, $originalName, $des)) {
-            echo "Done|" . $des . "|" . $originalName;
+        $id = saveDocument($email, $originalName, $des);
+        if ($id) {
+            echo "Done|" . $des . "|" . $originalName . "|" . $id;
         } else {
             echo "Error: Database failed.";
         }
