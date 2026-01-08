@@ -63,7 +63,7 @@ $recentActivities = getRecentActivity($userId);
                 <div class="card purple-card">
                     <div class="card-text">
                         <h3>Reputation Score</h3>
-                        <p>38/100</p>
+                        <p>100/100</p>
                     </div>
                     <div class="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -124,7 +124,8 @@ $recentActivities = getRecentActivity($userId);
                             <p>Set new objectives</p>
                         </div>
                     </div>
-                    <div class="activity act-green" onclick="window.location.href='../views/challenges.php'" style="cursor:pointer;">
+                    <div class="activity act-green" onclick="window.location.href='../views/challenges.php'"
+                        style="cursor:pointer;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="2">
                             <path d="M6 9V2h12v7"></path>
                             <path d="M18 9v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V9"></path>
@@ -161,21 +162,21 @@ $recentActivities = getRecentActivity($userId);
                 <h3>Recent Activity</h3>
                 <div class="activity-list">
                     <?php if (empty($recentActivities)): ?>
-                        <p style="color:#888;">No recent activity found.</p>
+                    <p style="color:#888;">No recent activity found.</p>
                     <?php else: ?>
-                        <?php foreach ($recentActivities as $act): ?>
-                            <div class="activity-item">
-                                <div class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                                        stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <polyline points="12 6 12 12 16 14"></polyline>
-                                    </svg></div>
-                                <div class="act-info">
-                                    <span class="act-title"><?= htmlspecialchars($act['action']) ?></span>
-                                    <span class="act-time"><?= date("M j, Y, g:i a", strtotime($act['timestamp'])) ?></span>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+                    <?php foreach ($recentActivities as $act): ?>
+                    <div class="activity-item">
+                        <div class="act-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg></div>
+                        <div class="act-info">
+                            <span class="act-title"><?= htmlspecialchars($act['action']) ?></span>
+                            <span class="act-time"><?= date("M j, Y, g:i a", strtotime($act['timestamp'])) ?></span>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
             </section>
