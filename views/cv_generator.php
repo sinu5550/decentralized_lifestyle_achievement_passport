@@ -27,12 +27,11 @@ $user = getUserInfo($email);
         <div class="container">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
                 <h3>CV Generator</h3>
-                <button onclick="logAndPrint()" class="button-blue btn-print-action"
-                    style="padding:10px 20px;">Download PDF / Print</button>
+                <button onclick="logAndPrint()" class="button-blue btn-print-action" style="padding:10px 20px;">Download
+                    PDF / Print</button>
             </div>
 
             <div class="cv-container">
-               
                 <div class="cv-form">
                     <h3>Your Details</h3>
                     <form id="cvForm" onkeyup="updateCV()">
@@ -57,9 +56,7 @@ $user = getUserInfo($email);
                             <label>Professional Summary</label>
                             <textarea id="inpSummary" placeholder="Brief overview of your career..."></textarea>
                         </div>
-
                         <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
-
                         <h4>Experience</h4>
                         <div id="exp-container">
                             <div class="form-group">
@@ -72,9 +69,7 @@ $user = getUserInfo($email);
                         </div>
                         <button type="button" class="btn-add" onclick="addExperienceField()">+ Add More
                             Experience</button>
-
                         <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
-
                         <h4>Education</h4>
                         <div id="edu-container">
                             <div class="form-group">
@@ -85,9 +80,7 @@ $user = getUserInfo($email);
                         </div>
                         <button type="button" class="btn-add" onclick="addEducationField()">+ Add More
                             Education</button>
-
                         <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
-
                         <h4>Skills</h4>
                         <div class="form-group">
                             <label>Skills (comma separated)</label>
@@ -96,7 +89,6 @@ $user = getUserInfo($email);
                     </form>
                 </div>
 
-              
                 <div class="cv-preview">
                     <div id="cv-template">
                         <h1 id="cvName">Your Name</h1>
@@ -105,22 +97,14 @@ $user = getUserInfo($email);
                             <span id="cvEmail">email@example.com</span> |
                             <span id="cvPhone">Phone</span>
                         </div>
-
                         <h2>Professional Summary</h2>
                         <p id="cvSummary">Your professional summary will appear here.</p>
-
                         <h2>Experience</h2>
-                        <div id="cvExperience">
-                         </div>
-
+                        <div id="cvExperience"></div>
                         <h2>Education</h2>
-                        <div id="cvEducation">
-                            </div>
-
+                        <div id="cvEducation"></div>
                         <h2>Skills</h2>
-                        <div id="cvSkills" class="cv-skills-list">
-                         
-                        </div>
+                        <div id="cvSkills" class="cv-skills-list"></div>
                     </div>
                 </div>
             </div>
@@ -130,18 +114,15 @@ $user = getUserInfo($email);
     <script src="../assets/js/IftyScript.js"></script>
     <script>
         function logAndPrint() {
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '../controllers/activityController.php', true);
-            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-            xhr.send('action=log_action&description=Generated CV');
-            
-            // Allow small delay or just print (print usually blocks, so request might be pending until after or sent immediately)
-            // setTimeout ensures the async send has a moment, though browser might handle it.
-            setTimeout(function() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open('POST', '../controllers/activityController.php', true);
+            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhttp.send('action=log_action&description=Generated CV');
+
+            setTimeout(function () {
                 window.print();
             }, 500);
         }
-      
         updateCV();
     </script>
 </body>

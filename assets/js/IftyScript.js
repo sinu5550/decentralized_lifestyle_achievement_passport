@@ -2,18 +2,15 @@ function confirmDelete(message = 'Are you sure?') {
     return confirm(message);
 }
 
-
-
-
 function handleAjaxAction(event, url, callback) {
     event.preventDefault();
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", url + '&ajax=true', true);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("GET", url + '&ajax=true', true);
+    xhttp.onreadystatechange = function () {
+        if (xhttp.readyState === 4) {
+            if (xhttp.status === 200) {
                 try {
-                    const data = JSON.parse(xhr.responseText);
+                    const data = JSON.parse(xhttp.responseText);
                     if (data.success) {
                         callback(data);
                     } else {
@@ -24,26 +21,21 @@ function handleAjaxAction(event, url, callback) {
                     alert('Invalid response from server');
                 }
             } else {
-                console.error('Error:', xhr.statusText);
+                console.error('Error:', xhttp.statusText);
                 alert('Network error');
             }
         }
     };
-    xhr.send();
+    xhttp.send();
 }
-
 
 function markNotificationRead(event, element) {
     event.preventDefault();
     const url = element.href;
-
     handleAjaxAction(event, url, (data) => {
-
         const card = element.closest('.notif-card');
         card.classList.remove('unread');
-        element.remove(); // Remove the blue dot
-
-        // Update menu badge
+        element.remove();
         const badge = document.querySelector('.menu-badge');
         if (badge) {
             badge.textContent = data.unreadCount;
@@ -52,20 +44,13 @@ function markNotificationRead(event, element) {
     });
 }
 
-// Milestone 
 function toggleMilestone(event, id) {
     event.preventDefault();
-
-
     const url = `../controllers/goalController.php?toggle_milestone=${id}`;
-
     handleAjaxAction(event, url, (data) => {
-
         const item = document.getElementById(`milestone-${id}`);
-
         const iconContainer = item.querySelector('.ms-icon');
         const isDone = item.classList.contains('done');
-
         if (isDone) {
             item.classList.remove('done');
             iconContainer.innerHTML = '<span style="display:inline-block; width:14px; height:14px; border:1px solid #777; border-radius:3px;"></span>';
@@ -76,10 +61,8 @@ function toggleMilestone(event, id) {
     });
 }
 
-
 function handleChallengeAction(event, url, type) {
     event.preventDefault();
-
     handleAjaxAction(event, url, (data) => {
         if (type == 'join') alert('Challenge joined!');
         if (type == 'complete') alert('Challenge completed!');
@@ -87,14 +70,12 @@ function handleChallengeAction(event, url, type) {
     });
 }
 
-
 function validateGoalForm(event) {
     const deadlineInput = document.querySelector('input[name="deadline"]');
     if (deadlineInput) {
         const selectedDate = new Date(deadlineInput.value);
         const today = new Date();
         today.setHours(0, 0, 0, 0);
-
         if (selectedDate < today) {
             event.preventDefault();
             alert('Deadline cannot be in the past!');
@@ -102,19 +83,15 @@ function validateGoalForm(event) {
         }
     }
     return true;
-
 }
 
-
 function updateCV() {
-
     document.getElementById('cvName').textContent = document.getElementById('inpName').value || 'Your Name';
     document.getElementById('cvTitle').textContent = document.getElementById('inpTitle').value || 'Job Title';
     document.getElementById('cvEmail').textContent = document.getElementById('inpEmail').value || 'email@example.com';
     document.getElementById('cvPhone').textContent = document.getElementById('inpPhone').value || 'Phone';
     document.getElementById('cvSummary').textContent = document.getElementById('inpSummary').value || 'Summary...';
 
-    // Experience
     const expContainer = document.getElementById('cvExperience');
     expContainer.innerHTML = '';
     const roles = document.querySelectorAll('.exp-role');
@@ -134,7 +111,6 @@ function updateCV() {
         }
     }
 
-
     const eduContainer = document.getElementById('cvEducation');
     eduContainer.innerHTML = '';
     const degrees = document.querySelectorAll('.edu-degree');
@@ -151,7 +127,6 @@ function updateCV() {
             eduContainer.appendChild(div);
         }
     }
-
 
     const skillsContainer = document.getElementById('cvSkills');
     skillsContainer.innerHTML = '';
