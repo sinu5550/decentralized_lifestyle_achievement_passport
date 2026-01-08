@@ -16,6 +16,18 @@
 </head>
 
 <body>
+    <?php
+    if (isset($_GET['success'])) {
+        if ($_GET['success'] == 'updated') echo "<script>alert('Profile updated successfully!');</script>";
+        if ($_GET['success'] == 'password_changed') echo "<script>alert('Password changed successfully!');</script>";
+    }
+    if (isset($_GET['error'])) {
+        if ($_GET['error'] == 'short_password') echo "<script>alert('Password must be at least 8 characters long!');</script>";
+        if ($_GET['error'] == 'update_failed') echo "<script>alert('Failed to update profile.');</script>";
+        
+        if ($_GET['error'] == 'password_mismatch') echo "<script>alert('Passwords do not match!');</script>";
+    }
+    ?>
     <div class="flex">
         <div class="menubar">
             <?php require_once "menubar.php"; ?>
@@ -168,11 +180,28 @@
 document.getElementById('profile_pic_input').addEventListener('change', function(event) {
     const file = event.target.files[0];
     if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.querySelector('.ppicture').src = e.target.result;
-        }
-        reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('profile_pic', file);
+        formData.append('ajax_upload_pic', true);
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.open('POST', '../controllers/profileController.php', true);
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                const response = this.responseText.trim();
+                if (response.includes('Done')) {
+                    const parts = response.split('|');
+                    const filePath = parts[1];
+                    document.querySelector('.ppicture').src = filePath;
+                    document.getElementById('profile_pic_input').value = ''; 
+                } else {
+                    console.error('Upload error: ' + response);
+                }
+            }
+        };
+
+        xhttp.send(formData);
     }
 });
 </script>
