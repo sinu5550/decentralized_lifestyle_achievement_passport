@@ -11,11 +11,7 @@ function createGoal($userId, $title, $description, $deadline)
     $sql = "INSERT INTO user_goal (user_id, title, description, deadline, status, progress) 
             VALUES ('$userId', '$title', '$description', '$deadline', 'Active', 0)";
 
-    if (mysqli_query($con, $sql)) {
-        return true;
-    } else {
-        return false;
-    }
+    return mysqli_query($con, $sql);
 }
 
 function getUserGoals($userId)
@@ -26,7 +22,7 @@ function getUserGoals($userId)
 
     $goals = [];
     while ($row = mysqli_fetch_assoc($result)) {
-       $row['milestones'] = getMilestones($row['id']);
+        $row['milestones'] = getMilestones($row['id']);
         $goals[] = $row;
     }
     return $goals;
@@ -35,15 +31,12 @@ function getUserGoals($userId)
 function deleteGoal($id)
 {
     $con = getConnection();
-    // Delete milestones first (cascade manually if not set in DB)
     $sqlDelM = "DELETE FROM goal_milestones WHERE goal_id = '$id'";
     mysqli_query($con, $sqlDelM);
 
     $sql = "DELETE FROM user_goal WHERE id = '$id'";
     return mysqli_query($con, $sql);
 }
-
-// --- Milestone Functions ---
 
 function addMilestone($goalId, $title)
 {
@@ -72,7 +65,6 @@ function getMilestones($goalId)
 function toggleMilestone($milestoneId)
 {
     $con = getConnection();
-    // First get current state and goal_id
     $sqlGet = "SELECT goal_id, is_completed FROM goal_milestones WHERE id='$milestoneId'";
     $res = mysqli_query($con, $sqlGet);
     $row = mysqli_fetch_assoc($res);
@@ -111,7 +103,7 @@ function updateGoalProgressFromMilestones($goalId)
     $total = count($milestones);
 
     if ($total == 0) {
-        $progress = 0; // Or keep existing? Let's say 0 if no milestones.
+        $progress = 0;
     } else {
         $completed = 0;
         foreach ($milestones as $m) {
