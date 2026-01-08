@@ -47,8 +47,7 @@
 
 .logout {
   width: 197px;
-  /* position: absolute; */
-  bottom: 10px;
+  margin-top: 20px;
 }
 .icons {
   width: 12px;
