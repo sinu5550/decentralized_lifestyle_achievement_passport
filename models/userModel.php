@@ -43,7 +43,7 @@ function updateUser($userId, $data)
     $phone = $data['phone'];
     $bio = $data['bio'];
     $location = $data['location'];
-    
+
     $picUpdate = "";
     if (isset($data['profile_pic']) && !empty($data['profile_pic'])) {
         $pic = $data['profile_pic'];
@@ -51,7 +51,7 @@ function updateUser($userId, $data)
     }
 
     $sql = "UPDATE users SET fullName='$fullName', email='$email', phone='$phone', bio='$bio', location='$location' $picUpdate WHERE id='$userId'";
-    
+
     if (mysqli_query($con, $sql)) {
         return true;
     } else {

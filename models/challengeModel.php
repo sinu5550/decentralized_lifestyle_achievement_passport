@@ -16,7 +16,6 @@ function getAllChallenges()
 function getUserChallenges($userId)
 {
     $con = getConnection();
-   
     $sql = "SELECT uc.*, c.title, c.description, c.points_reward, c.duration_days 
             FROM user_challenges uc 
             JOIN challenges c ON uc.challenge_id = c.id 
@@ -32,7 +31,6 @@ function getUserChallenges($userId)
 
 function getAvailableChallenges($userId)
 {
-    
     $con = getConnection();
     $sql = "SELECT * FROM challenges WHERE id NOT IN (SELECT challenge_id FROM user_challenges WHERE user_id='$userId' AND status='Joined')";
     $result = mysqli_query($con, $sql);
@@ -46,7 +44,6 @@ function getAvailableChallenges($userId)
 function joinChallenge($userId, $challengeId)
 {
     $con = getConnection();
-    
     $check = "SELECT id FROM user_challenges WHERE user_id='$userId' AND challenge_id='$challengeId' AND status='Joined'";
     $res = mysqli_query($con, $check);
     if (mysqli_num_rows($res) > 0)
@@ -63,4 +60,3 @@ function completeChallenge($userId, $userChallengeId)
     $sql = "UPDATE user_challenges SET status='Completed', completed_at='$current' WHERE id='$userChallengeId' AND user_id='$userId'";
     return mysqli_query($con, $sql);
 }
-?>

@@ -1,6 +1,7 @@
 <?php
 
-function dbConnection() {
+function dbConnection()
+{
     $servername = "localhost";
     $username = "root";
     $password = "";

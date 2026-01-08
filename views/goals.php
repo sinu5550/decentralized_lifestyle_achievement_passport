@@ -12,7 +12,6 @@ $myGoals = getUserGoals($userId);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,9 +19,7 @@ $myGoals = getUserGoals($userId);
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/menuStyle.css" />
     <link rel="stylesheet" href="../assets/css/goals.css" />
-
 </head>
-
 <body>
     <div class="flex">
         <div class="menubar">
@@ -33,7 +30,6 @@ $myGoals = getUserGoals($userId);
                 <h3>My Goals</h3>
                 <p>Set, track, and achieve your aspirations</p>
 
-                <!-- Create Goal Section -->
                 <div class="create-goal-form">
                     <h4>Create New Goal</h4>
                     <form action="../controllers/goalController.php" method="POST" onsubmit="return validateGoalForm(event)">
@@ -53,7 +49,6 @@ $myGoals = getUserGoals($userId);
                     </form>
                 </div>
 
-                <!-- Goals List -->
                 <div class="goals-list">
                     <?php if (empty($myGoals)): ?>
                         <p>No goals set yet. Start by creating one!</p>
@@ -72,7 +67,6 @@ $myGoals = getUserGoals($userId);
                                 </div>
                                 <p style="text-align: right; font-size: 0.8em; margin-top: 5px;"><?= $goal['progress'] ?>% Completed</p>
                                 
-                                <!-- Milestones -->
                                 <div class="milestones-section">
                                     <strong>Milestones</strong>
                                     <?php if (!empty($goal['milestones'])): ?>
@@ -94,7 +88,6 @@ $myGoals = getUserGoals($userId);
                                         <?php endforeach; ?>
                                     <?php endif; ?>
 
-                                    <!-- Add Milestone Form -->
                                     <form action="../controllers/goalController.php" method="POST" class="add-milestone-form">
                                         <input type="hidden" name="goal_id" value="<?= $goal['id'] ?>">
                                         <input type="text" name="milestone_title" placeholder="Add a milestone (e.g. Month 1, Week 1)" required>
@@ -102,9 +95,7 @@ $myGoals = getUserGoals($userId);
                                     </form>
                                 </div>
 
-
                                 <div class="goal-actions">
-                                    <!-- Only Delete Needed for Goal itself now -->
                                     <a href="../controllers/goalController.php?delete=<?= $goal['id'] ?>" class="btn btn-danger"
                                         style="padding: 5px 10px; font-size: 0.8em; text-decoration: none;"
                                         onclick="return confirmDelete('Are you sure you want to delete this goal?')">Delete Goal</a>

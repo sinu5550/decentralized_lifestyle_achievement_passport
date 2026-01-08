@@ -23,12 +23,6 @@ if (isset($_POST['create_goal'])) {
     if (empty($title) || empty($deadline)) {
         header('location: ../views/goals.php?error=empty_fields');
     } else {
-        $goalData = [
-            'title' => $title,
-            'description' => $description,
-            'deadline' => $deadline
-        ];
-
         if (createGoal($userId, $title, $description, $deadline)) {
             logActivity($userId, "Created goal: $title");
             createNotification($userId, 'New Goal Set', "You committed to: $title", 'success');
@@ -50,11 +44,10 @@ if (isset($_POST['create_goal'])) {
 } elseif (isset($_GET['toggle_milestone'])) {
     $milestoneId = $_GET['toggle_milestone'];
     $success = toggleMilestone($milestoneId);
-    
-    // We don't easily have the milestone title here without fetching it, so generic log or skip for now to keep it simple/fast? 
-    // The user asked for "all information". Let's log "Toggled milestone status".
+
     logActivity($userId, "Toggled milestone status");
-    if($success) addPoints($userId, 10); // Simple logic: award on toggle action success. Ideally check if "completed" state.
+    if ($success)
+        addPoints($userId, 10);
 
     if (isset($_GET['ajax'])) {
         echo json_encode(['success' => $success]);

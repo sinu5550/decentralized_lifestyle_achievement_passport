@@ -34,8 +34,7 @@ $availableChallenges = getAvailableChallenges($userId);
                 <h3>Challenges</h3>
                 <p>Join challenges to earn points and build habits.</p>
 
-
-           <div class="challenge-section">
+                <div class="challenge-section">
                     <h4>My Active Challenges</h4>
                     <?php if (empty($activeChallenges)): ?>
                         <p style="color:#888; font-style:italic;">You haven't joined any challenges yet.</p>
@@ -48,21 +47,13 @@ $availableChallenges = getAvailableChallenges($userId);
                                         <span class="status-badge status-<?= strtolower($c['status']) ?>">
                                             <?= $c['status'] ?>
                                         </span>
-                                        <h4>
-                                            <?= htmlspecialchars($c['title']) ?>
-                                        </h4>
-                                        <p>
-                                            <?= htmlspecialchars($c['description']) ?>
-                                        </p>
+                                        <h4><?= htmlspecialchars($c['title']) ?></h4>
+                                        <p><?= htmlspecialchars($c['description']) ?></p>
                                     </div>
                                     <div>
                                         <div class="challenge-meta">
-                                            <span>⚡
-                                                <?= $c['points_reward'] ?> pts
-                                            </span>
-                                            <span>📅
-                                                <?= $c['duration_days'] ?> days
-                                            </span>
+                                            <span>⚡ <?= $c['points_reward'] ?> pts</span>
+                                            <span>📅 <?= $c['duration_days'] ?> days</span>
                                         </div>
                                         <?php if ($c['status'] == 'Joined'): ?>
                                             <a href="../controllers/challengeController.php?complete=<?= $c['id'] ?>"
@@ -73,13 +64,10 @@ $availableChallenges = getAvailableChallenges($userId);
                                         <?php endif; ?>
                                     </div>
                                 </div>
-                            <?php endforeach;
-                             ?>
+                            <?php endforeach; ?>
                         </div>
-                    <?php endif; 
-                    ?>
+                    <?php endif; ?>
                 </div>
-
 
                 <div class="challenge-section">
                     <h4>Available Challenges</h4>
@@ -87,21 +75,13 @@ $availableChallenges = getAvailableChallenges($userId);
                         <?php foreach ($availableChallenges as $c): ?>
                             <div class="challenge-card">
                                 <div>
-                                    <h4>
-                                        <?= htmlspecialchars($c['title']) ?>
-                                    </h4>
-                                    <p>
-                                        <?= htmlspecialchars($c['description']) ?>
-                                    </p>
+                                    <h4><?= htmlspecialchars($c['title']) ?></h4>
+                                    <p><?= htmlspecialchars($c['description']) ?></p>
                                 </div>
                                 <div>
                                     <div class="challenge-meta">
-                                        <span>⚡
-                                            <?= $c['points_reward'] ?> pts
-                                        </span>
-                                        <span>📅
-                                            <?= $c['duration_days'] ?> days
-                                        </span>
+                                        <span>⚡ <?= $c['points_reward'] ?> pts</span>
+                                        <span>📅 <?= $c['duration_days'] ?> days</span>
                                     </div>
                                     <a href="../controllers/challengeController.php?join=<?= $c['id'] ?>"
                                         class="challenge-btn btn-join"
@@ -111,7 +91,6 @@ $availableChallenges = getAvailableChallenges($userId);
                         <?php endforeach; ?>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

@@ -1,0 +1,32 @@
+.diary-entry {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #4834d4;
+}
+
+.diary-date {
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.diary-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    float: right;
+    color: #e74c3c;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.delete-btn:hover {
+    text-decoration: underline;
+}
