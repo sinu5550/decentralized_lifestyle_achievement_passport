@@ -1,4 +1,4 @@
-gi<?php
+<?php
 require_once('db.php');
 
 function login($user)
